@@ -13,7 +13,7 @@ $PluginInfo['QuoteSelection'] = array(
 
 class QuoteSelectionPlugin extends Gdn_Plugin {
 
-    public function DiscussionController_Render_Before(&$Sender) {
+    public function DiscussionController_Render_Before($Sender) {
         $Session = Gdn::Session();
 
         if ($Session->UserID == 0)
@@ -24,7 +24,7 @@ class QuoteSelectionPlugin extends Gdn_Plugin {
         $Sender->AddCssFile($this->GetResource('quoteselection.css', FALSE, FALSE));
         $Sender->AddDefinition('qsInputFormatter', strtolower(Gdn::Config('Garden.InputFormatter')));
         $Sender->AddDefinition("qsQuote", T('Quote'));
-        $Sender->AddDefinition("qsQuoteText", T('%s said'));
+        $Sender->AddDefinition("qsQuoteText", T('%s wrote'));
     }
 
     public function Setup() {}
